@@ -204,7 +204,7 @@ button:disabled {
   <div id="productos"></div>
 
 <section class="card">
-  <h2>🧣 Pañuelos</h2>
+  <h2>🧣 Pañuelos - 5,00 € </h2>
 
   <img id="panuelo-img"
        src="panuelo.png"
@@ -221,7 +221,7 @@ button:disabled {
 </section>
 
   <section class="card">
-    <h2>🏷️ Pegatinas</h2>
+    <h2>🏷️ Pack de 5 Pegatinas - 1€ </h2>
     <img src="logopena.jpeg" alt="Pegatinas de la peña">
     <label for="pegatinas">Cantidad</label>
     <input class="cantidad-simple" id="pegatinas"
@@ -354,8 +354,8 @@ function calcular() {
     total += cantidadPrenda(prenda.id) * prenda.precio;
   });
 
-  total += Number(document.getElementById("panuelos").value || 0) * 0;
-  total += Number(document.getElementById("pegatinas").value || 0) * 0;
+  total += Number(document.getElementById("panuelos").value || 0) * 5;
+  total += Number(document.getElementById("pegatinas").value || 0) * 1;
 
   document.getElementById("total").textContent =
     total.toLocaleString("es-ES", {
