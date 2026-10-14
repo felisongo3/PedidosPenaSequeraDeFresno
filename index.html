@@ -4,50 +4,334 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Sequera de Fresno</title>
+<title>Sequera de Fresno - Pedidos</title>
 
 <style>
-body {
-    background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 30px;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-img {
-    max-width: 300px;
-    margin: 20px auto;
-    display: block;
+body{
+font-family:Arial,sans-serif;
+color:white;
+
+background:
+linear-gradient(
+rgba(0,0,0,.92),
+rgba(0,0,0,.92)
+),
+url('fondo-sequera.png');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-h1 {
-    color: gold;
+header{
+text-align:center;
+padding:40px 20px;
+background:rgba(0,0,0,.85);
+border-bottom:3px solid #d9aa42;
 }
 
-.card {
-    max-width: 600px;
-    margin: auto;
-    background: #222;
-    padding: 20px;
-    border-radius: 10px;
+header img{
+max-width:180px;
 }
+
+header h1{
+font-size:55px;
+color:#d9aa42;
+margin-top:15px;
+text-shadow:0 0 15px #d9aa42;
+}
+
+header p{
+font-size:22px;
+margin-top:10px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:rgba(30,30,30,.9);
+border-radius:15px;
+padding:20px;
+margin-bottom:20px;
+border:1px solid rgba(217,170,66,.4);
+}
+
+.card h2{
+color:#d9aa42;
+margin-bottom:15px;
+}
+
+.card img{
+width:100%;
+max-width:450px;
+display:block;
+margin:auto;
+margin-bottom:20px;
+border-radius:10px;
+}
+
+input,
+select{
+width:100%;
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:8px;
+margin-top:5px;
+margin-bottom:15px;
+}
+
+.total{
+text-align:center;
+font-size:36px;
+font-weight:bold;
+color:#d9aa42;
+margin:30px 0;
+}
+
+button{
+width:100%;
+padding:18px;
+font-size:22px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+background:
+linear-gradient(
+45deg,
+#9c0000,
+#ff3c3c
+);
+
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.footer{
+margin-top:40px;
+text-align:center;
+font-size:20px;
+color:#d9aa42;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<header>
 
-<img src="logopena.jpeg" alt="Logo">
+<img src="logopena.jpeg">
 
 <h1>SEQUERA DE FRESNO</h1>
 
-<p>🍻 La web está funcionando correctamente 🍻</p>
+<p>🍻 Pedidos Oficiales de la Peña 🍻</p>
 
-<img src="camisetas.jpeg" alt="Camiseta">
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>👤 Datos Personales</h2>
+
+<input id="nombre" type="text" placeholder="Nombre y Apellidos">
+
+<input id="telefono" type="text" placeholder="Teléfono">
 
 </div>
+
+<div class="card">
+
+<img src="camisetas.jpeg">
+
+<h2>👕 Camiseta Normal - 12,50€</h2>
+
+<input id="normal" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<img src="camisetas.jpeg">
+
+<h2>🖤 Oversize - 15,50€</h2>
+
+<input id="oversize" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<img src="camisetas.jpeg">
+
+<h2>✨ Oversize Premium - 17€</h2>
+
+<input id="premium" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>👕 Polo - 16€</h2>
+
+<input id="polo" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>🧥 Sudadera sin capucha - 25€</h2>
+
+<input id="sudadera1" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>🧥 Sudadera con capucha - 30€</h2>
+
+<input id="sudadera2" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="total">
+
+TOTAL: <span id="total">0.00</span> €
+
+</div>
+
+<button onclick="enviarPedido()">
+
+🍻 REALIZAR PEDIDO 🍻
+
+</button>
+
+<div class="footer">
+
+🍻 Nos vemos en las fiestas 🍻
+
+</div>
+
+</div>
+
+<script>
+
+function calcular(){
+
+let total = 0;
+
+total += Number(document.getElementById("normal").value) * 12.5;
+total += Number(document.getElementById("oversize").value) * 15.5;
+total += Number(document.getElementById("premium").value) * 17;
+total += Number(document.getElementById("polo").value) * 16;
+total += Number(document.getElementById("sudadera1").value) * 25;
+total += Number(document.getElementById("sudadera2").value) * 30;
+
+document.getElementById("total").innerText =
+total.toFixed(2);
+
+}
+
+async function enviarPedido(){
+
+let nombre =
+document.getElementById("nombre").value;
+
+if(nombre==""){
+
+alert("Introduce tu nombre");
+
+return;
+
+}
+
+const datos = {
+
+nombre:
+document.getElementById("nombre").value,
+
+telefono:
+document.getElementById("telefono").value,
+
+camiseta:
+document.getElementById("normal").value,
+
+oversize:
+document.getElementById("oversize").value,
+
+premium:
+document.getElementById("premium").value,
+
+polo:
+document.getElementById("polo").value,
+
+sudadera1:
+document.getElementById("sudadera1").value,
+
+sudadera2:
+document.getElementById("sudadera2").value,
+
+total:
+document.getElementById("total").innerText
+
+};
+
+try{
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbyqxqMgjxZua5NTtBXAKHmIeOYBU7dcbQOv8sGpqleQ4kgBAQj6ynVvM2SqS96HQEw2/exec",
+{
+method:"POST",
+mode:"no-cors",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(datos)
+}
+);
+
+alert("✅ Pedido enviado correctamente");
+
+document.getElementById("nombre").value="";
+document.getElementById("telefono").value="";
+
+document.getElementById("normal").value=0;
+document.getElementById("oversize").value=0;
+document.getElementById("premium").value=0;
+document.getElementById("polo").value=0;
+document.getElementById("sudadera1").value=0;
+document.getElementById("sudadera2").value=0;
+
+calcular();
+
+}
+catch(error){
+
+alert("❌ Error al enviar pedido");
+
+console.log(error);
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
