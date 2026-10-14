@@ -17,14 +17,12 @@ box-sizing:border-box;
 body{
 font-family:Arial,sans-serif;
 color:white;
-
 background:
 linear-gradient(
 rgba(0,0,0,.92),
 rgba(0,0,0,.92)
 ),
 url('fondo-sequera.png');
-
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
@@ -81,8 +79,7 @@ margin-bottom:20px;
 border-radius:10px;
 }
 
-input,
-select{
+input,select{
 width:100%;
 padding:12px;
 font-size:16px;
@@ -108,18 +105,9 @@ font-weight:bold;
 border:none;
 border-radius:10px;
 background:
-linear-gradient(
-45deg,
-#9c0000,
-#ff3c3c
-);
-
+linear-gradient(45deg,#9c0000,#ff3c3c);
 color:white;
 cursor:pointer;
-}
-
-button:hover{
-opacity:.9;
 }
 
 .footer{
@@ -158,9 +146,20 @@ color:#d9aa42;
 
 <div class="card">
 
+<h2>👕 Camiseta Normal - 12,50€</h2>
+
 <img src="camisetas.jpeg">
 
-<h2>👕 Camiseta Normal - 12,50€</h2>
+<select id="tallaNormal">
+<option value="">Selecciona talla</option>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
 
 <input id="normal" type="number" value="0" min="0" onchange="calcular()">
 
@@ -168,9 +167,20 @@ color:#d9aa42;
 
 <div class="card">
 
+<h2>🖤 Oversize - 15,50€</h2>
+
 <img src="camisetas.jpeg">
 
-<h2>🖤 Oversize - 15,50€</h2>
+<select id="tallaOversize">
+<option value="">Selecciona talla</option>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
 
 <input id="oversize" type="number" value="0" min="0" onchange="calcular()">
 
@@ -178,9 +188,20 @@ color:#d9aa42;
 
 <div class="card">
 
+<h2>✨ Oversize Premium - 17€</h2>
+
 <img src="camisetas.jpeg">
 
-<h2>✨ Oversize Premium - 17€</h2>
+<select id="tallaPremium">
+<option value="">Selecciona talla</option>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
 
 <input id="premium" type="number" value="0" min="0" onchange="calcular()">
 
@@ -190,6 +211,18 @@ color:#d9aa42;
 
 <h2>👕 Polo - 16€</h2>
 
+<img src="camisetas.jpeg">
+
+<select id="tallaPolo">
+<option value="">Selecciona talla</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
+
 <input id="polo" type="number" value="0" min="0" onchange="calcular()">
 
 </div>
@@ -197,6 +230,18 @@ color:#d9aa42;
 <div class="card">
 
 <h2>🧥 Sudadera sin capucha - 25€</h2>
+
+<img src="camisetas.jpeg">
+
+<select id="tallaSudadera1">
+<option value="">Selecciona talla</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
 
 <input id="sudadera1" type="number" value="0" min="0" onchange="calcular()">
 
@@ -206,7 +251,39 @@ color:#d9aa42;
 
 <h2>🧥 Sudadera con capucha - 30€</h2>
 
+<img src="camisetas.jpeg">
+
+<select id="tallaSudadera2">
+<option value="">Selecciona talla</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
+
 <input id="sudadera2" type="number" value="0" min="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>🧣 Pañuelos</h2>
+
+<img src="logopena.jpeg">
+
+<input id="panuelos" type="number" value="0" min="0">
+
+</div>
+
+<div class="card">
+
+<h2>🏷️ Pegatinas</h2>
+
+<img src="logopena.jpeg">
+
+<input id="pegatinas" type="number" value="0" min="0">
 
 </div>
 
@@ -217,15 +294,11 @@ TOTAL: <span id="total">0.00</span> €
 </div>
 
 <button onclick="enviarPedido()">
-
 🍻 REALIZAR PEDIDO 🍻
-
 </button>
 
 <div class="footer">
-
 🍻 Nos vemos en las fiestas 🍻
-
 </div>
 
 </div>
@@ -250,10 +323,7 @@ total.toFixed(2);
 
 async function enviarPedido(){
 
-let nombre =
-document.getElementById("nombre").value;
-
-if(nombre==""){
+if(document.getElementById("nombre").value==""){
 
 alert("Introduce tu nombre");
 
@@ -263,39 +333,34 @@ return;
 
 const datos = {
 
-nombre:
-document.getElementById("nombre").value,
+nombre: document.getElementById("nombre").value,
+telefono: document.getElementById("telefono").value,
 
-telefono:
-document.getElementById("telefono").value,
+camiseta: document.getElementById("normal").value,
+oversize: document.getElementById("oversize").value,
+premium: document.getElementById("premium").value,
+polo: document.getElementById("polo").value,
+sudadera1: document.getElementById("sudadera1").value,
+sudadera2: document.getElementById("sudadera2").value,
 
-camiseta:
-document.getElementById("normal").value,
+tallaNormal: document.getElementById("tallaNormal").value,
+tallaOversize: document.getElementById("tallaOversize").value,
+tallaPremium: document.getElementById("tallaPremium").value,
+tallaPolo: document.getElementById("tallaPolo").value,
+tallaSudadera1: document.getElementById("tallaSudadera1").value,
+tallaSudadera2: document.getElementById("tallaSudadera2").value,
 
-oversize:
-document.getElementById("oversize").value,
+panuelos: document.getElementById("panuelos").value,
+pegatinas: document.getElementById("pegatinas").value,
 
-premium:
-document.getElementById("premium").value,
-
-polo:
-document.getElementById("polo").value,
-
-sudadera1:
-document.getElementById("sudadera1").value,
-
-sudadera2:
-document.getElementById("sudadera2").value,
-
-total:
-document.getElementById("total").innerText
+total: document.getElementById("total").innerText
 
 };
 
 try{
 
 await fetch(
-"https://script.google.com/macros/s/AKfycbxetUNMoa0cIgp9Jdua1iS9WTYJl4FfffeyED_VXLLOIteIJjcEU74QZ6qBo0fgY-db/exec",
+"https://script.google.com/macros/s/AKfycbyAqHSusS47Pv7dV3mGG0OHepFOF4kTdjh95HVjcvUdJotKX_FMnYRmgwGdtz7MmAQl/exec",
 {
 method:"POST",
 mode:"no-cors",
@@ -308,17 +373,7 @@ body:JSON.stringify(datos)
 
 alert("✅ Pedido enviado correctamente");
 
-document.getElementById("nombre").value="";
-document.getElementById("telefono").value="";
-
-document.getElementById("normal").value=0;
-document.getElementById("oversize").value=0;
-document.getElementById("premium").value=0;
-document.getElementById("polo").value=0;
-document.getElementById("sudadera1").value=0;
-document.getElementById("sudadera2").value=0;
-
-calcular();
+location.reload();
 
 }
 catch(error){
