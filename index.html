@@ -393,25 +393,36 @@ async function enviarPedido() {
 
   // Datos generales, manteniendo los nombres anteriores
   // para facilitar la compatibilidad con tu Google Apps Script.
-  const datos = {
-    nombre,
-    telefono,
-    camiseta: String(cantidadPrenda("normal")),
-    tallaNormal: detalleTallas("normal"),
-    oversize: String(cantidadPrenda("oversize")),
-    tallaOversize: detalleTallas("oversize"),
-    premium: String(cantidadPrenda("premium")),
-    tallaPremium: detalleTallas("premium"),
-    polo: String(cantidadPrenda("polo")),
-    tallaPolo: detalleTallas("polo"),
-    sudadera1: String(cantidadPrenda("sudadera1")),
-    tallaSudadera1: detalleTallas("sudadera1"),
-    sudadera2: String(cantidadPrenda("sudadera2")),
-    tallaSudadera2: detalleTallas("sudadera2"),
-    panuelos: document.getElementById("panuelos").value,
-    pegatinas: document.getElementById("pegatinas").value,
-    total: total.toFixed(2)
-  };
+const datos = {
+  nombre,
+  telefono,
+
+  camiseta: String(cantidadPrenda("normal")),
+  tallaNormal: detalleTallas("normal"),
+
+  camisetaNino: String(cantidadPrenda("normalnino")),
+  tallaNormalNino: detalleTallas("normalnino"),
+
+  oversize: String(cantidadPrenda("oversize")),
+  tallaOversize: detalleTallas("oversize"),
+
+  premium: String(cantidadPrenda("premium")),
+  tallaPremium: detalleTallas("premium"),
+
+  polo: String(cantidadPrenda("polo")),
+  tallaPolo: detalleTallas("polo"),
+
+  sudadera1: String(cantidadPrenda("sudadera1")),
+  tallaSudadera1: detalleTallas("sudadera1"),
+
+  sudadera2: String(cantidadPrenda("sudadera2")),
+  tallaSudadera2: detalleTallas("sudadera2"),
+
+  panuelos: document.getElementById("panuelos").value,
+  pegatinas: document.getElementById("pegatinas").value,
+
+  total: total.toFixed(2)
+};
 
   // Desglose individual de todas las tallas.
   PRENDAS.forEach(prenda => {
