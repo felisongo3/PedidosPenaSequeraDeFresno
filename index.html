@@ -1,103 +1,153 @@
-<script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-function calcular(){
+<title>Sequera de Fresno - Pedidos 2027</title>
 
-let total = 0;
+<style>
 
-total += Number(document.getElementById("normal").value) * 12.5;
-total += Number(document.getElementById("oversize").value) * 15.5;
-total += Number(document.getElementById("premium").value) * 17;
-total += Number(document.getElementById("polo").value) * 16;
-total += Number(document.getElementById("sudadera1").value) * 25;
-total += Number(document.getElementById("sudadera2").value) * 30;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-document.getElementById("total").innerHTML =
-total.toFixed(2);
+body{
+font-family:Arial,sans-serif;
+
+background:
+linear-gradient(
+rgba(0,0,0,.92),
+rgba(0,0,0,.92)
+),
+url('fondo-sequera.png');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:white;
+}
+
+header{
+text-align:center;
+padding:40px 20px;
+background:rgba(0,0,0,.85);
+border-bottom:3px solid #d9aa42;
+}
+
+header img{
+max-width:180px;
+filter:drop-shadow(0 0 10px #d9aa42);
+}
+
+header h1{
+margin-top:15px;
+font-size:60px;
+color:#d9aa42;
+text-shadow:
+0 0 10px #d9aa42,
+0 0 25px #d9aa42;
+}
+
+header p{
+margin-top:10px;
+font-size:22px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(20,20,20,.9);
+border:1px solid rgba(217,170,66,.3);
+border-radius:15px;
+padding:25px;
+margin-bottom:25px;
+backdrop-filter:blur(6px);
+}
+
+.card h2{
+color:#d9aa42;
+margin-bottom:15px;
+}
+
+.card img{
+width:100%;
+max-width:450px;
+display:block;
+margin:auto;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:8px;
+margin-bottom:15px;
+border:none;
+border-radius:8px;
+font-size:16px;
+}
+
+input[type=number]{
+text-align:center;
+}
+
+.total{
+text-align:center;
+font-size:38px;
+font-weight:bold;
+margin:30px 0;
+color:#d9aa42;
+text-shadow:0 0 10px #d9aa42;
+}
+
+button{
+width:100%;
+padding:18px;
+font-size:22px;
+font-weight:bold;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#900000,#ff3b3b);
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.01);
+}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:22px;
+color:#d9aa42;
+}
+
+@media(max-width:768px){
+
+header h1{
+font-size:38px;
+}
+
+.total{
+font-size:28px;
+}
 
 }
 
-async function enviarPedido(){
+</style>
+</head>
+<body>
 
-let nombre =
-document.getElementById("nombre").value;
+<header>
 
-let telefono =
-document.getElementById("telefono").value;
-
-if(nombre === ""){
-
-alert("Introduce tu nombre");
-
-return;
-
-}
-
-const datos = {
-
-nombre: nombre,
-telefono: telefono,
-
-camiseta:
-document.getElementById("normal").value,
-
-oversize:
-document.getElementById("oversize").value,
-
-premium:
-document.getElementById("premium").value,
-
-polo:
-document.getElementById("polo").value,
-
-sudadera1:
-document.getElementById("sudadera1").value,
-
-sudadera2:
-document.getElementById("sudadera2").value,
-
-total:
-document.getElementById("total").innerText
-
-};
-
-try{
-
-await fetch(
-"https://script.google.com/macros/s/AKfycbyqxqMgjxZua5NTtBXAKHmIeOYBU7dcbQOv8sGpqleQ4kgBAQj6ynVvM2SqS96HQEw2/exec",
-{
-method:"POST",
-mode:"no-cors",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(datos)
-});
-
-alert(
-"✅ Pedido recibido correctamente. ¡Nos vemos en las fiestas!"
-);
-
-document.getElementById("nombre").value="";
-document.getElementById("telefono").value="";
-
-document.getElementById("normal").value=0;
-document.getElementById("oversize").value=0;
-document.getElementById("premium").value=0;
-document.getElementById("polo").value=0;
-document.getElementById("sudadera1").value=0;
-document.getElementById("sudadera2").value=0;
-
-calcular();
-
-}
-catch(error){
-
-alert("❌ Error al enviar el pedido");
-
-console.log(error);
-
-}
-
-}
-
-</script>
+<img
