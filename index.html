@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,456 +8,442 @@
 <title>Sequera de Fresno - Pedidos</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-font-family:Arial,sans-serif;
-color:white;
-background:
-linear-gradient(
-rgba(0,0,0,.92),
-rgba(0,0,0,.92)
-),
-url('fondo-sequera.png');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    linear-gradient(rgba(0,0,0,.92), rgba(0,0,0,.92)),
+    url('fondo-sequera.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-header{
-text-align:center;
-padding:40px 20px;
-background:rgba(0,0,0,.85);
-border-bottom:3px solid #d9aa42;
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0,0,0,.85);
+  border-bottom: 3px solid #d9aa42;
 }
 
-header img{
-max-width:180px;
+header img {
+  max-width: 180px;
+  width: 100%;
 }
 
-header h1{
-font-size:55px;
-color:#d9aa42;
-margin-top:15px;
-text-shadow:0 0 15px #d9aa42;
+header h1 {
+  font-size: clamp(30px, 6vw, 55px);
+  color: #d9aa42;
+  margin-top: 15px;
+  text-shadow: 0 0 15px #d9aa42;
 }
 
-header p{
-font-size:22px;
-margin-top:10px;
+header p {
+  font-size: 22px;
+  margin-top: 10px;
 }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
 }
 
-.card{
-background:rgba(30,30,30,.9);
-border-radius:15px;
-padding:20px;
-margin-bottom:20px;
-border:1px solid rgba(217,170,66,.4);
+.card {
+  background: rgba(30,30,30,.9);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(217,170,66,.4);
 }
 
-.card h2{
-color:#d9aa42;
-margin-bottom:15px;
+.card h2 {
+  color: #d9aa42;
+  margin-bottom: 15px;
 }
 
-.card img{
-width:100%;
-max-width:450px;
-display:block;
-margin:auto;
-margin-bottom:20px;
-border-radius:10px;
+.card img {
+  width: 100%;
+  max-width: 450px;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 10px;
 }
 
-input,select{
-width:100%;
-padding:12px;
-font-size:16px;
-border:none;
-border-radius:8px;
-margin-top:5px;
-margin-bottom:15px;
+input, select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
-.total{
-text-align:center;
-font-size:36px;
-font-weight:bold;
-color:#d9aa42;
-margin:30px 0;
+.tallas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 12px;
 }
 
-button{
-width:100%;
-padding:18px;
-font-size:22px;
-font-weight:bold;
-border:none;
-border-radius:10px;
-background:
-linear-gradient(45deg,#9c0000,#ff3c3c);
-color:white;
-cursor:pointer;
+.talla-item {
+  text-align: center;
+  background: rgba(255,255,255,.06);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(217,170,66,.25);
 }
 
-.footer{
-margin-top:40px;
-text-align:center;
-font-size:20px;
-color:#d9aa42;
+.talla-item span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d9aa42;
+  margin-bottom: 5px;
 }
 
+.talla-item select {
+  margin: 0;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.cantidad-simple {
+  max-width: 200px;
+}
+
+.total {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: bold;
+  color: #d9aa42;
+  margin: 30px 0;
+}
+
+button {
+  width: 100%;
+  padding: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #9c0000, #ff3c3c);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 20px;
+  color: #d9aa42;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  header p {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<img src="logopena.jpeg">
-
-<h1>SEQUERA DE FRESNO</h1>
-
-<p>🍻 Pedidos Oficiales de la Peña 🍻</p>
-
+  <img src="logopena.jpeg" alt="Logo de la peña">
+  <h1>SEQUERA DE FRESNO</h1>
+  <p>🍻 Pedidos Oficiales de la Peña 🍻</p>
 </header>
 
-<div class="container">
+<main class="container">
 
-<div class="card">
+  <section class="card">
+    <h2>👤 Datos personales</h2>
+    <label for="nombre">Nombre y apellidos</label>
+    <input id="nombre" type="text"
+           placeholder="Nombre y apellidos"
+           autocomplete="name" required>
 
-<h2>👤 Datos Personales</h2>
+    <label for="telefono">Teléfono</label>
+    <input id="telefono" type="tel"
+           placeholder="Número de teléfono"
+           autocomplete="tel">
+  </section>
 
-<input id="nombre" type="text" placeholder="Nombre y Apellidos">
+  <!-- Las prendas se generan automáticamente -->
+  <div id="productos"></div>
 
-<input id="telefono" type="text" placeholder="Teléfono">
+  <section class="card">
+    <h2>🧣 Pañuelos</h2>
+    <img src="logopena.jpeg" alt="Pañuelos de la peña">
+    <label for="panuelos">Cantidad</label>
+    <input class="cantidad-simple" id="panuelos"
+           type="number" value="0" min="0" step="1">
+  </section>
 
-</div>
+  <section class="card">
+    <h2>🏷️ Pegatinas</h2>
+    <img src="logopena.jpeg" alt="Pegatinas de la peña">
+    <label for="pegatinas">Cantidad</label>
+    <input class="cantidad-simple" id="pegatinas"
+           type="number" value="0" min="0" step="1">
+  </section>
 
-<div class="card">
+  <div class="total">
+    TOTAL: <span id="total">0,00</span> €
+  </div>
 
-<h2>👕 Camiseta Normal - 12,50€</h2>
+  <button id="botonPedido" type="button"
+          onclick="enviarPedido()">
+    🍻 REALIZAR PEDIDO 🍻
+  </button>
 
-<img src="camisetas.jpeg">
+  <div class="footer">
+    🍻 Nos vemos en las fiestas 🍻
+  </div>
 
-<div class="tallas-grid">
-
-<div>
-<span>XS</span>
-<select id="normal_xs" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>S</span>
-<select id="normal_s" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>M</span>
-<select id="normal_m" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>L</span>
-<select id="normal_l" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>XL</span>
-<select id="normal_xl" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>XXL</span>
-<select id="normal_xxl" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-<div>
-<span>3XL</span>
-<select id="normal_3xl" onchange="calcular()">
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-</div>
-
-</div>
-  
-<h2>🖤 Oversize - 15,50€</h2>
-
-<img src="camisetas.jpeg">
-
-<select id="tallaOversize">
-<option value="">Selecciona talla</option>
-<option>XS</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-<option>3XL</option>
-</select>
-
-<input id="oversize" type="number" value="0" min="0" onchange="calcular()">
-
-</div>
-
-<div class="card">
-
-<h2>✨ Oversize Premium - 17€</h2>
-
-<img src="camisetas.jpeg">
-
-<select id="tallaPremium">
-<option value="">Selecciona talla</option>
-<option>XS</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-<option>3XL</option>
-</select>
-
-<input id="premium" type="number" value="0" min="0" onchange="calcular()">
-
-</div>
-
-<div class="card">
-
-<h2>👕 Polo - 16€</h2>
-
-<img src="camisetas.jpeg">
-
-<select id="tallaPolo">
-<option value="">Selecciona talla</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-<option>3XL</option>
-</select>
-
-<input id="polo" type="number" value="0" min="0" onchange="calcular()">
-
-</div>
-
-<div class="card">
-
-<h2>🧥 Sudadera sin capucha - 25€</h2>
-
-<img src="camisetas.jpeg">
-
-<select id="tallaSudadera1">
-<option value="">Selecciona talla</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-<option>3XL</option>
-</select>
-
-<input id="sudadera1" type="number" value="0" min="0" onchange="calcular()">
-
-</div>
-
-<div class="card">
-
-<h2>🧥 Sudadera con capucha - 30€</h2>
-
-<img src="camisetas.jpeg">
-
-<select id="tallaSudadera2">
-<option value="">Selecciona talla</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-<option>3XL</option>
-</select>
-
-<input id="sudadera2" type="number" value="0" min="0" onchange="calcular()">
-
-</div>
-
-<div class="card">
-
-<h2>🧣 Pañuelos</h2>
-
-<img src="logopena.jpeg">
-
-<input id="panuelos" type="number" value="0" min="0">
-
-</div>
-
-<div class="card">
-
-<h2>🏷️ Pegatinas</h2>
-
-<img src="logopena.jpeg">
-
-<input id="pegatinas" type="number" value="0" min="0">
-
-</div>
-
-<div class="total">
-
-TOTAL: <span id="total">0.00</span> €
-
-</div>
-
-<button onclick="enviarPedido()">
-🍻 REALIZAR PEDIDO 🍻
-</button>
-
-<div class="footer">
-🍻 Nos vemos en las fiestas 🍻
-</div>
-
-</div>
+</main>
 
 <script>
+const PRENDAS = [
+  {
+    id: "normal",
+    titulo: "👕 Camiseta normal",
+    precio: 12.50,
+    imagen: "camisetas.jpeg",
+    tallas: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
+  },
+  {
+    id: "oversize",
+    titulo: "🖤 Camiseta oversize",
+    precio: 15.50,
+    imagen: "camisetas.jpeg",
+    tallas: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
+  },
+  {
+    id: "premium",
+    titulo: "✨ Camiseta oversize premium",
+    precio: 17,
+    imagen: "camisetas.jpeg",
+    tallas: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
+  },
+  {
+    id: "polo",
+    titulo: "👕 Polo",
+    precio: 16,
+    imagen: "camisetas.jpeg",
+    tallas: ["S", "M", "L", "XL", "XXL", "3XL"]
+  },
+  {
+    id: "sudadera1",
+    titulo: "🧥 Sudadera sin capucha",
+    precio: 25,
+    imagen: "camisetas.jpeg",
+    tallas: ["S", "M", "L", "XL", "XXL", "3XL"]
+  },
+  {
+    id: "sudadera2",
+    titulo: "🧥 Sudadera con capucha",
+    precio: 30,
+    imagen: "camisetas.jpeg",
+    tallas: ["S", "M", "L", "XL", "XXL", "3XL"]
+  }
+];
 
-function calcular(){
+const contenedor = document.getElementById("productos");
 
-let total = 0;
+function crearProductos() {
+  contenedor.innerHTML = PRENDAS.map(prenda => `
+    <section class="card">
+      <h2>${prenda.titulo} - ${prenda.precio.toLocaleString(
+        "es-ES", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      )} €</h2>
 
-total += Number(document.getElementById("normal").value) * 12.5;
-total += Number(document.getElementById("oversize").value) * 15.5;
-total += Number(document.getElementById("premium").value) * 17;
-total += Number(document.getElementById("polo").value) * 16;
-total += Number(document.getElementById("sudadera1").value) * 25;
-total += Number(document.getElementById("sudadera2").value) * 30;
+      <img src="${prenda.imagen}" alt="${prenda.titulo}">
 
-document.getElementById("total").innerText =
-total.toFixed(2);
+      <div class="tallas-grid">
+        ${prenda.tallas.map(talla => `
+          <div class="talla-item">
+            <span>${talla}</span>
+            <label for="${prenda.id}_${talla.toLowerCase()}">
+              Cantidad
+            </label>
+            <select
+              id="${prenda.id}_${talla.toLowerCase()}"
+              data-prenda="${prenda.id}"
+              data-talla="${talla}"
+              aria-label="${prenda.titulo}, talla ${talla}"
+            >
+              ${[0, 1, 2, 3, 4, 5].map(n =>
+                `<option value="${n}">${n}</option>`
+              ).join("")}
+            </select>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+  `).join("");
 
+  contenedor.querySelectorAll("select").forEach(select => {
+    select.addEventListener("change", calcular);
+  });
 }
 
-async function enviarPedido(){
-
-if(document.getElementById("nombre").value==""){
-
-alert("Introduce tu nombre");
-
-return;
-
+function cantidadPrenda(id) {
+  return [...document.querySelectorAll(
+    `select[data-prenda="${id}"]`
+  )].reduce((suma, select) => suma + Number(select.value), 0);
 }
 
-const datos = {
-
-nombre: document.getElementById("nombre").value,
-telefono: document.getElementById("telefono").value,
-
-camiseta: document.getElementById("normal").value,
-oversize: document.getElementById("oversize").value,
-premium: document.getElementById("premium").value,
-polo: document.getElementById("polo").value,
-sudadera1: document.getElementById("sudadera1").value,
-sudadera2: document.getElementById("sudadera2").value,
-
-tallaNormal: document.getElementById("tallaNormal").value,
-tallaOversize: document.getElementById("tallaOversize").value,
-tallaPremium: document.getElementById("tallaPremium").value,
-tallaPolo: document.getElementById("tallaPolo").value,
-tallaSudadera1: document.getElementById("tallaSudadera1").value,
-tallaSudadera2: document.getElementById("tallaSudadera2").value,
-
-panuelos: document.getElementById("panuelos").value,
-pegatinas: document.getElementById("pegatinas").value,
-
-total: document.getElementById("total").innerText
-
-};
-
-try{
-
-await fetch(
-"https://script.google.com/macros/s/AKfycbyAqHSusS47Pv7dV3mGG0OHepFOF4kTdjh95HVjcvUdJotKX_FMnYRmgwGdtz7MmAQl/exec",
-{
-method:"POST",
-mode:"no-cors",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(datos)
-}
-);
-
-alert("✅ Pedido enviado correctamente");
-
-location.reload();
-
-}
-catch(error){
-
-alert("❌ Error al enviar pedido");
-
-console.log(error);
-
+function detalleTallas(id) {
+  return [...document.querySelectorAll(
+    `select[data-prenda="${id}"]`
+  )]
+    .filter(select => Number(select.value) > 0)
+    .map(select => `${select.dataset.talla}: ${select.value}`)
+    .join(", ");
 }
 
+function calcular() {
+  let total = 0;
+
+  PRENDAS.forEach(prenda => {
+    total += cantidadPrenda(prenda.id) * prenda.precio;
+  });
+
+  total += Number(document.getElementById("panuelos").value || 0) * 0;
+  total += Number(document.getElementById("pegatinas").value || 0) * 0;
+
+  document.getElementById("total").textContent =
+    total.toLocaleString("es-ES", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+  return total;
 }
 
+document.getElementById("panuelos")
+  .addEventListener("input", calcular);
+document.getElementById("pegatinas")
+  .addEventListener("input", calcular);
+
+async function enviarPedido() {
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const boton = document.getElementById("botonPedido");
+
+  if (!nombre) {
+    alert("Introduce tu nombre y apellidos.");
+    document.getElementById("nombre").focus();
+    return;
+  }
+
+  if (!PRENDAS.some(p => cantidadPrenda(p.id) > 0) &&
+      Number(document.getElementById("panuelos").value) === 0 &&
+      Number(document.getElementById("pegatinas").value) === 0) {
+    alert("Selecciona al menos un artículo.");
+    return;
+  }
+
+  const total = calcular();
+
+  // Datos generales, manteniendo los nombres anteriores
+  // para facilitar la compatibilidad con tu Google Apps Script.
+  const datos = {
+    nombre,
+    telefono,
+    camiseta: String(cantidadPrenda("normal")),
+    tallaNormal: detalleTallas("normal"),
+    oversize: String(cantidadPrenda("oversize")),
+    tallaOversize: detalleTallas("oversize"),
+    premium: String(cantidadPrenda("premium")),
+    tallaPremium: detalleTallas("premium"),
+    polo: String(cantidadPrenda("polo")),
+    tallaPolo: detalleTallas("polo"),
+    sudadera1: String(cantidadPrenda("sudadera1")),
+    tallaSudadera1: detalleTallas("sudadera1"),
+    sudadera2: String(cantidadPrenda("sudadera2")),
+    tallaSudadera2: detalleTallas("sudadera2"),
+    panuelos: document.getElementById("panuelos").value,
+    pegatinas: document.getElementById("pegatinas").value,
+    total: total.toFixed(2)
+  };
+
+  // Desglose individual de todas las tallas.
+  PRENDAS.forEach(prenda => {
+    document.querySelectorAll(
+      `select[data-prenda="${prenda.id}"]`
+    ).forEach(select => {
+      datos[select.id] = select.value;
+    });
+  });
+
+  boton.disabled = true;
+  boton.textContent = "ENVIANDO PEDIDO...";
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbyAqHSusS47Pv7dV3mGG0OHepFOF4kTdjh95HVjcvUdJotKX_FMnYRmgwGdtz7MmAQl/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(datos)
+      }
+    );
+
+    alert(
+      "Solicitud de pedido enviada. Comprueba que se ha registrado correctamente."
+    );
+
+    location.reload();
+
+  } catch (error) {
+    console.error("Error al enviar el pedido:", error);
+    alert("No se ha podido enviar el pedido. Inténtalo de nuevo.");
+    boton.disabled = false;
+    boton.textContent = "🍻 REALIZAR PEDIDO 🍻";
+  }
+}
+
+crearProductos();
+calcular();
 </script>
 
 </body>
