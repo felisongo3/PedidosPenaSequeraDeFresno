@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Pedidos Sequera de Fresno</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:white;
+}
+
+header{
+text-align:center;
+padding:30px;
+background:black;
+}
+
+header img{
+max-width:250px;
+}
+
+h1{
+color:#d8a13a;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1c1c1c;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+.card img{
+width:100%;
+max-width:400px;
+display:block;
+margin:auto;
+border-radius:10px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:10px;
+border-radius:5px;
+border:none;
+}
+
+.total{
+font-size:28px;
+font-weight:bold;
+color:#d8a13a;
+text-align:center;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#c40000;
+color:white;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png">
+<h1>Pedidos Sequera de Fresno</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Datos personales</h2>
+
+<input type="text" placeholder="Nombre y Apellidos">
+
+<input type="text" placeholder="Teléfono">
+</div>
+
+<div class="card">
+
+<img src="camiseta.jpg">
+
+<h2>Camiseta Normal - 12,50€</h2>
+
+<select>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
+
+<input id="normal" type="number" value="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>Oversize - 15,50€</h2>
+
+<select>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
+
+<input id="oversize" type="number" value="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>Oversize Premium - 17€</h2>
+
+<select>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+<option>3XL</option>
+</select>
+
+<input id="premium" type="number" value="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>Polo - 16€</h2>
+
+<input id="polo" type="number" value="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>Sudadera sin capucha - 25€</h2>
+
+<input id="sudadera1" type="number" value="0" onchange="calcular()">
+
+<>
+
+<h2>Sudadera con capucha - 30€</h2>
+
+<input id="sudadera2" type="number" value="0" onchange="calcular()">
+
+</div>
+
+<div class="card">
+
+<h2>Pañuelos</h2>
+
+<input id="panuelos" type="number" value="0">
+
+</div>
+
+<div class="card">
+
+<h2>Pegatinas (pack de 5)</h2>
+
+<input id="pegatinas" type="number" value="0">
+
+</div>
+
+<div class="total">
+
+TOTAL: <span id="total">0.00</span> €
+
+</div>
+
+<br>
+
+<button>
+Enviar Pedido
+</button>
+
+</div>
+
+<script>
+
+function calcular(){
+
+let total=0;
+
+total+=normal.value*12.5;
+total+=oversize.value*15.5;
+total+=premium.value*17;
+total+=polo.value*16;
+total+=sudadera1.value*25;
+total+=sudadera2.value*30;
+
+document.getElementById("total").innerHTML=
+total.toFixed(2);
+
+}
+
+</script>
+
+</body>
+</html>
