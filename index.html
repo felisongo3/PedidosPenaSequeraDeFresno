@@ -454,21 +454,55 @@ const datos = {
   boton.disabled = true;
   boton.textContent = "ENVIANDO PEDIDO...";
 
-  try {
+try {
 
-    alert(
-      "Solicitud de pedido enviada. Comprueba que se ha registrado correctamente."
-    );
+  const { error } = await supabase
+    .from("Pedidos")
+    .insert([
+      {
+        Nombre: datos.nombre,
+        Telefono: datos.telefono,
 
-    location.reload();
+        Camiseta: Number(datos.camiseta),
+        "Camiseta Peques": Number(datos.camisetaNino),
 
-  } catch (error) {
-    console.error("Error al enviar el pedido:", error);
-    alert("No se ha podido enviar el pedido. Inténtalo de nuevo.");
-    boton.disabled = false;
-    boton.textContent = "🍻 REALIZAR PEDIDO 🍻";
+        Oversize: Number(datos.oversize),
+        "Oversize Premium": Number(datos.premium),
+
+        Polo: Number(datos.polo),
+
+        "Sudadera sin Capucha": Number(datos.sudadera1),
+        "Sudadera Capucha": Number(datos.sudadera2),
+
+        Pañuelos: Number(datos.panuelos),
+
+        "Pack Pegatinas": Number(datos.pegatinas),
+
+        talla_camiseta: datos.tallaNormal,
+        talla_camiseta_peque: datos.tallaNormalNino,
+
+        talla_oversize: datos.tallaOversize,
+        talla_oversizepremium: datos.tallaPremium,
+
+        talla_polo: datos.tallaPolo,
+
+        talla_SudaderaSinCap: datos.tallaSudadera1,
+        talla_SudaderaCapuc: datos.tallaSudadera2,
+
+        total: Number(datos.total)
+      }
+    ]);
+
+  if (error) {
+    throw error;
   }
+
+  alert("Pedido enviado correctamente");
+
+  location.reload();
+
 }
+
 
 crearProductos();
 calcular();
