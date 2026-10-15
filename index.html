@@ -243,7 +243,19 @@ button:disabled {
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+const supabaseUrl = "https://gmyxliaitrjtoxgrgbdt.supabase.co";
+
+const supabaseKey = "sb_publishable_ku4P7ox1RlAG2YFo8BSrvw_9a009Kom";
+
+const supabase = window.supabase.createClient(
+  supabaseUrl,
+  supabaseKey
+);
+
 const PRENDAS = [
   {
     id: "normal",
@@ -443,18 +455,6 @@ const datos = {
   boton.textContent = "ENVIANDO PEDIDO...";
 
   try {
-  
-await fetch(
-  "https://script.google.com/macros/s/AKfycbzhsNZkDNl8IhuOYgjEb9YWxvHuaVYJkkWnu0_A-QqirKct-oghD7xXH1pWLY58OUbG/exec",
-  {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify(datos)
-  }
-);
 
     alert(
       "Solicitud de pedido enviada. Comprueba que se ha registrado correctamente."
