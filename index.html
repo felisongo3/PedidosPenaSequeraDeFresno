@@ -216,28 +216,49 @@ button:disabled {
        src="panuelo.png"
        alt="Pañuelos de la peña">
 
-  <label for="panuelos">Cantidad</label>
+  <div style="text-align:center; margin-top:15px;">
+  <label for="panuelos" style="
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#d9aa42;
+  ">
+    Cantidad
+  </label>
 
   <input class="cantidad-simple"
-       id="panuelos"
-       type="number"
-       value="0"
-       min="0"
-       step="1"
-       oninput="if(this.value < 0) this.value = 0">
+         id="panuelos"
+         type="number"
+         value="0"
+         min="0"
+         step="1"
+         oninput="if(this.value < 0) this.value = 0"
+         style="margin:auto; display:block;">
+</div>
 </section>
 
   <section class="card">
     <h2>🏷️ Pack de 5 Pegatinas - 1€ </h2>
     <img src="logopena.jpeg" alt="Pegatinas de la peña">
-    <label for="pegatinas">Cantidad</label>
-    <input class="cantidad-simple" id="pegatinas"
-       type="number"
-       value="0"
-       min="0"
-       step="1"
-       oninput="if(this.value < 0) this.value = 0">
-  </section>
+  <div style="text-align:center; margin-top:15px;">
+  <label for="pegatinas" style="
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#d9aa42;
+  ">
+    Cantidad
+  </label>
+
+  <input class="cantidad-simple"
+         id="pegatinas"
+         type="number"
+         value="0"
+         min="0"
+         step="1"
+         oninput="if(this.value < 0) this.value = 0"
+         style="margin:auto; display:block;">
+</div>
 
   <section class="card">
   <h2>💳 Pago por transferencia</h2>
