@@ -517,13 +517,23 @@ try {
       }
     ]);
 
-  if (error) {
-    throw error;
-  }
+if (error) {
+  throw error;
+}
 
-  alert("Pedido enviado correctamente");
+alert(
+`✅ Pedido registrado correctamente
 
-  location.reload();
+💰 Total a pagar: ${total.toFixed(2)} €
+
+🏦 Recuerda realizar la transferencia bancaria por dicho importe.
+
+✍️ En el concepto indica tu nombre y apellidos.
+
+🍻 ¡Nos vemos en las fiestas!`
+);
+
+location.reload();
 
   } catch (error) {
     console.error(error);
