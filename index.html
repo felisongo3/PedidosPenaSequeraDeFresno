@@ -161,7 +161,22 @@ button:disabled {
   color: #d9aa42;
   padding-bottom: 20px;
 }
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 5px gold;
+  }
 
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px gold;
+  }
+
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px gold;
+  }
+}
 @media (max-width: 480px) {
   .container {
     padding: 12px;
@@ -210,17 +225,20 @@ button:disabled {
   <div id="productos"></div>
 
 <section class="card">
+
 <div style="
-background:#ffcc00;
+background:linear-gradient(45deg,#ffd700,#ff9900);
 color:black;
 font-weight:bold;
 text-align:center;
-padding:10px;
+padding:12px;
 border-radius:10px;
 margin-bottom:15px;
-font-size:22px;
+font-size:24px;
+box-shadow:0 0 15px rgba(255,215,0,.6);
 ">
-⭐⭐⭐ ¡NOVEDAD 2027! ⭐⭐⭐
+🚨🚨🚨 ¡¡¡ NOVEDAD 2027 !!! 🚨🚨🚨
+<br>
 🧣 Pañuelo Oficial de la Peña
 </div>
 
@@ -270,17 +288,20 @@ animation:pulse 1.5s infinite;
     Cantidad
   </label>
 
-  <input class="cantidad-simple"
-         id="pegatinas"
-         type="number"
-         value="0"
-         min="0"
-         step="1"
-         oninput="if(this.value < 0) this.value = 0"
-         style="margin:auto; display:block;">
+<input class="cantidad-simple"
+       id="pegatinas"
+       type="number"
+       value="0"
+       min="0"
+       step="1"
+       oninput="if(this.value < 0) this.value = 0"
+       style="margin:auto; display:block;">
+
 </div>
 
-  <section class="card">
+</section>
+
+<section class="card">
   <h2>💳 Pago por transferencia</h2>
 
   <img
