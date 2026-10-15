@@ -497,16 +497,12 @@ try {
 
   location.reload();
 
-} catch (error) {
-  console.error(error);
-
-  alert("Error al enviar el pedido");
-
-  boton.disabled = false;
-  boton.textContent = "🍻 REALIZAR PEDIDO 🍻";
-}
-
-// Estas líneas deben quedar FUERA de enviarPedido()
+  } catch (error) {
+    console.error(error);
+    alert("Error al enviar el pedido");
+    boton.disabled = false;
+    boton.textContent = "🍻 REALIZAR PEDIDO 🍻";
+  }
 }
 
 crearProductos();
